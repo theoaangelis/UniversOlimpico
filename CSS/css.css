@@ -1,0 +1,106 @@
+body {
+    width: auto;
+    height: auto;
+    margin: auto;
+    background-color: gray;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#header1 {
+    position: relative;
+    background-color: rgb(17, 17, 17);
+    height: 50px;
+    width: auto;
+}
+
+button {
+    position: absolute;
+    font-size: 20px;
+    margin: 0;
+    display: block;
+    top: 10px;
+    left: 1700px;
+    width: auto;
+}
+
+h1 {
+    float: left;
+    position: relative;
+    margin: auto;
+    color: whitesmoke;
+    padding: 7px;
+    left: 20px;
+    width: auto;
+}
+
+img {
+    float: left;
+    position: relative;
+    width: 30px;
+    left: 20px;
+    padding: 10px;
+}
+
+#divlateral {
+    position: fixed;
+    background-color: rgb(49, 49, 49);
+    width: 200px;
+    height: 100vh;
+}
+
+.indice {
+    margin-top: 20px;
+    margin-left: 5px;
+    color: whitesmoke;
+}
+
+#divhistoria {
+    border: solid;
+    padding: 15px;
+    position: absolute;
+    left: 330px;
+    height: auto;
+    width: 150vh;
+    top: 70px;
+}
+
+#hist1,
+#hist2,
+#hist3,
+#hist4,
+#hist5,
+#hist6,
+#hist7,
+#hist1 {
+    height: auto;
+    width: auto;
+}
+
+.titulo {
+    font-size: 2em;
+    position: absolute;
+    float: left;
+    color: orange;
+    margin-top: 20px;
+}
+
+.paragrafos {
+    font-size: 1.5em;
+    position: relative;
+    top: 40px;
+    margin-left: 4px;
+}
+
+ul {
+    position: relative;
+    font-size: 1.5em;
+    top: 20px;
+}
+
+li {
+    position: relative;
+    margin-top: 10px;
+}
