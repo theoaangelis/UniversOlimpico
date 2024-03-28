@@ -1,1 +1,1 @@
-Olá, esse será o nosso projeto acerca de curiosidades das Olimpíadas.
+Olá, esse será o nosso projeto acerca de curiosidades sobre a história do basquete e sua representatividade nas Olimpíadas.
