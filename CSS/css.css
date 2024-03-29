@@ -1,6 +1,6 @@
 body {
     width: auto;
-    height: auto;
+    height: 2567px;
     margin: auto;
     background-color: gray;
 }
@@ -18,13 +18,13 @@ html {
 }
 
 button {
-    position: absolute;
-    font-size: 20px;
-    margin: 0;
-    display: block;
-    top: 10px;
-    left: 1700px;
-    width: auto;
+    top: 2500px;
+    margin: 10px;
+    left: 50%;
+    position: relative;
+    z-index: 10;
+    border-radius: 10px;
+    font-size: 1.5em;
 }
 
 h1 {
