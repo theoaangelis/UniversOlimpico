@@ -1,8 +1,8 @@
 body {
-    width: auto;
-    height: 2567px;
-    margin: auto;
+    margin: 0;
+    padding: 0;
     background-color: gray;
+    margin-bottom: 50px;
 }
 
 html {
@@ -17,11 +17,12 @@ html {
     z-index: 5;
 }
 
+
+
 button {
-    top: 2500px;
-    margin: 10px;
-    left: 50%;
-    position: relative;
+    margin-top: 30px;
+    left: 46%;
+    position: absolute;
     z-index: 10;
     border-radius: 10px;
     font-size: 1.5em;
@@ -29,11 +30,11 @@ button {
 
 h1 {
     float: left;
-    position: relative;
-    margin: auto;
+    position: absolute;
+    margin-top: auto;
     color: whitesmoke;
     padding: 7px;
-    left: 20px;
+    left: 60px;
     width: auto;
 }
 
@@ -50,7 +51,7 @@ img {
     position: fixed;
     background-color: rgb(49, 49, 49);
     width: 200px;
-    height: 100vh;
+    height: 100%;
 }
 
 .indice {
@@ -60,9 +61,10 @@ img {
 }
 
 #divhistoria {
+    display: block;
     border: solid;
     padding: 15px;
-    position: absolute;
+    position: relative;
     left: 330px;
     height: auto;
     width: 150vh;
@@ -75,8 +77,12 @@ img {
 #hist4,
 #hist5,
 #hist1 {
-    height: auto;
-    width: auto;
+    position: relative;
+}
+
+section {
+    scroll-margin-top: 50px;
+    padding: 20px;
 }
 
 .titulo {
@@ -84,7 +90,8 @@ img {
     position: absolute;
     float: left;
     color: orange;
-    margin-top: 20px;
+    margin-top: 0px;
+    padding: 0;
 }
 
 .paragrafos {
