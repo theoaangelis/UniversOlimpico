@@ -1,6 +1,6 @@
 body {
     width: auto;
-    height: auto;
+    height: 2567px;
     margin: auto;
     background-color: gray;
 }
@@ -10,20 +10,21 @@ html {
 }
 
 #header1 {
-    position: relative;
+    position: fixed;
     background-color: rgb(17, 17, 17);
     height: 50px;
-    width: auto;
+    width: 100%;
+    z-index: 5;
 }
 
 button {
-    position: absolute;
-    font-size: 20px;
-    margin: 0;
-    display: block;
-    top: 10px;
-    left: 1700px;
-    width: auto;
+    top: 2500px;
+    margin: 10px;
+    left: 50%;
+    position: sticky;
+    z-index: 10;
+    border-radius: 10px;
+    font-size: 1.5em;
 }
 
 h1 {
@@ -45,6 +46,7 @@ img {
 }
 
 #divlateral {
+    top: 50px;
     position: fixed;
     background-color: rgb(49, 49, 49);
     width: 200px;
