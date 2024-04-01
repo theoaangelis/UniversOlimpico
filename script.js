@@ -36,15 +36,26 @@ const questao2 = (dados,pais,sexo) => {
     }
     const lfiltrada2 = dados.filter(x => x.Sport == "Basketball" && x.Team == pais && x.Sex == sexo[0]).map(x=>x.Name)
     const resultado2 = contelem(lfiltrada2)
-    log(`Atleta com mais participações representando ${pais} foi ${(resultado2[0])[0]} com um total de ${(resultado2[0][1])} participações.`)
+    const nome = (resultado2[0])[0]
+    const quant = (resultado2[0])[1]
+    const traduz = (p = pais) => {
+        if (p == "Japan") return "Japão"
+        else if (p == "United States") return "Estados Unidos"
+        else if (p == "Brazil") return "Brasil"
+        else if (p == "Italy") return "Itália"
+        else if (p == "France") return "França"
+    }
+    log(`Atleta com mais participações representando ${traduz()} foi ${nome} com um total de ${(quant)} participações.`)
 }
 
+
+// Função que lê o arquivo CSV
 const lerCSV = (caminhoArquivo) => {
     const dados = []
     fs.createReadStream(caminhoArquivo)
         .pipe(csv())
         .on('data', (linha) => dados.push(linha))
-        .on('end', () =>  questao1(dados,1952))
+        .on('end', () =>  questao2(dados,"France","Masculino"))
         .on('error', (error) => {
             console.error(error);
         });
