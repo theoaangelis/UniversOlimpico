@@ -18,10 +18,20 @@ img {
     left: 20px;
     padding: 10px;
 }
+#header1 {
+    position: fixed;
+    position: fixed;
+    background-color: rgb(17, 17, 17);
+    height: 50px;
+    width: 100%;
+    z-index: 5;
+    width: 100%;
+    z-index: 5;
+}
 
 h1 {
     float: left;
-    position: absolute;
+    position: static;
     margin-top: auto;
     color: whitesmoke;
     padding: 7px;
