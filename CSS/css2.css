@@ -35,8 +35,6 @@ img {
 }
 
 #nomedosite3 {
-
-#nomedosite3 {
     float: left;
     position: absolute;
     position: absolute;
@@ -54,18 +52,10 @@ img {
     top: 100px;
 }
 
-#loadCsvButton{
 #linhafiltrada {
     position: relative;
     margin-right: auto;
     margin-left: auto;
-    top: 100px;
-}
-
-#loadCsvButton{
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
     top: 100px;
 }
 
@@ -96,4 +86,3 @@ input{
     font-size:x-large;
     font-weight: bold;
 }
-
