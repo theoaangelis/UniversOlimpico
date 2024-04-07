@@ -1,5 +1,6 @@
 body {
     position: relative;
+    position: relative;
     margin: 0;
     background-color: gray;
 }
@@ -22,6 +23,7 @@ body {
     width: 100%;
     z-index: 5;
     top: 0;
+    top: 0;
 }
 
 img {
@@ -33,7 +35,10 @@ img {
 }
 
 #nomedosite3 {
+
+#nomedosite3 {
     float: left;
+    position: absolute;
     position: absolute;
     margin-top: auto;
     color: whitesmoke;
@@ -42,6 +47,14 @@ img {
     width: auto;
 }
 
+#linhafiltrada {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    top: 100px;
+}
+
+#loadCsvButton{
 #linhafiltrada {
     position: relative;
     margin-right: auto;
@@ -83,3 +96,4 @@ input{
     font-size:x-large;
     font-weight: bold;
 }
+
