@@ -1,183 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Consulta de Jogadores</title>
-<link rel="stylesheet" href="CSS/css2.css">
-<link rel="icon" type="image/png" href="img/imgbasquetefavicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/css2.css">
+  <link rel="icon" type="image/png" href="img/imgbasquetefavicon.png">
+  <title>OlympicBuckets</title>
 </head>
+
 <body>
-    <header id="header1">
-        <a href="index.html">
-            <img src="img/imgbasquete.png">
-        </a>
-        <h1>Quiz Olímpico</h1>
-    </header>
-<br><br><br>
-<br>
+  <header id="header1">
+    <a href="index.html">
+      <img src="img/imgbasquete.png">
+    </a>
+    <h1 id="nomedosite3">OlympicBuckets</h1>
+  </header>
+  <main>
+    <div class="peq">
+      <h1 class="perguntas"><span>Quantas Medalhas o Brasil Tem No Basquete Olímpico ? </span></h1>
+      <input id="input1" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+        placeholder="Quantidade de Medalhas">
+      <button onclick="questao1()" id="resp1">Resposta
+      </button>
+      <div id="resp12"></div>
+    </div>
+    <div class="peq">
+      <h1 class="perguntas"><span>Nas Olimíadas, qual foi o(a) Atleta que mais participou pelos Estados Unidos ? </span>
+      </h1>
+      <input id="input2" type="text" oninput="this.value = this.value.replace(/[0-9]/g, '')"
+        placeholder="Nome do Atleta">
+      <button onclick="questao2()" id="resp2">Resposta
+      </button>
+      <span id="resp22"></span>
+    </div>
+    <div class="peq">
+      <h1 class="perguntas"><span>Qual foi o País vencendor do Basquete Olímpico Masculino em 2016 ?
+        </span></h1>
+      <input id="input3" type="text" oninput="this.value = this.value.replace(/[0-9]/g, '')" placeholder="Nome do País">
+      <button onclick="questao3()" id="resp3">Resposta
+      </button>
+      <div id="resp32"></div>
+    </div>
+    <div class="peq">
+      <h1 class="perguntas"><span>Em que ano houve a entrada definitiva do Basquete nas Olimpíadas ? </span></h1>
+      <input id="input4" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Ano">
+      <button onclick="questao4()" id="resp4">Resposta
+      </button>
+      <div id="resp42"></div>
+    </div>
+    <div class="peq">
+      <h1 class="perguntas"><span> Cite 1 dos 4 principais jogadores do "Dream Team". </span></h1>
+      <input id="input5" type="text" oninput="this.value = this.value.replace(/[0-9]/g, '')" placeholder="Nome do Time">
+      <button onclick="questao5()" id="resp5">Resposta
+      </button>
+      <div id="resp52"></div>
+    </div>
+  </main>
 
-<script>
-// Definição de funções auxiliares 
-const log = (x) => console.log(x)
+  <script>
+    document.getElementById('loadCsvButton').addEventListener('click', loadCSVData);
 
-const converte_equipe = (equipe) => {
-        if (equipe == "estadunidense") return "United States"
-        else if (equipe == "brasileira") return "Brazil"
-        else if (time == "italiana") return "Italy"
-        else if (time == "francesa") return "France"
-        else if (time == "canadense") return "Canada"
-        else if (time == "lituana") return "Lithuania"
-        else if (time == "búlgara") return "Bulgaria"
-        else if (time == "chinesa") return "China"
-        else if (time == "australiana") return "Australia"
-        else if (time == "argentina") return "Argentina"
-    }
-
-const traduz_pais_p_ingles = (time) => {
-    if (time == "Estados Unidos") return "United States"
-    else if (time == "Brasil") return "Brazil"
-    else if (time == "Bulgária") return "Bulgaria"
-    else if (time == "Austrália") return "Australia"
-    else if (time == "China") return "China"
-    else if (time == "Itália") return "Italy"
-    else if (time == "França") return "France"
-    else if (time == "Espanha") return "Spain"
-    else if (time == "Argentina") return "Argentina"
-}
-const traduz_pais_p_portugues = (time) => {
-    if (time == "United States") return "Estados Unidos"
-    else if (time == "Brazil") return "Brasil"
-    else if (time == "Bulgaria") return "Bulgária"
-    else if (time == "Australia") return "Austrália"
-    else if (time == "China") return "China"
-    else if (time == "Italy") return "Itália"
-    else if (time == "France") return "França"
-    else if (time == "Spain") return "Espanha"
-    else if (time == "Argentina") return "Argentina"
-
-}
-// iremos trabalhar com nome, idade, sexo, altura, time, sport = basketball, ano, medalha, city
-// suponha que o csv filtrado contém apenas as colunas acima, e seja uma lista de registros
-
-// 1° questão: quem foram os atletas masculinos que conquistaram a <posição> posição no pódio dos Jogos Olímpicos de <ano>?
-// anos: 1976, 1988, 1992, 1996, 2004, 2008, 2012, 2016
-// posições: primeira, segunda, terceira
-const questao_1 = (ano, posição) => {
-    const converter_posicao_pra_medalha = (posição) => { //recebe a posição do pódio e retorna a medalha equivalente
-        if (posição == "primeira") return "Gold"
-        else if (posição == "segunda") return "Silver"
-        else if (posição == "terceira") return "Bronze"
-    }
-    const traduzir_medalha = (medal) => { //recebe o nome da medalha em inglês e retorna o nome em português
-        if (medal == "Gold") return "ouro"
-        else if (medal == "Silver") return "prata"
-        else if (medal == "Bronze") return "bronze"
-    }
-    const lista = csv_filtrado.filter(x => x.Sex == "M" && x.Year == ano && x.Medal == converter_posicao_pra_medalha(posição))
-    .map(x => x.Name)
-    // lista ^ retorna os nomes dos jogadores do ano e posição do pódio escolhidos
-    log(`Confira a lista completa dos representantes da medalha de ${traduzir_medalha(converter_posicao_pra_medalha(posição))} das Olimpíadas de Verão de ${ano}: ${lista}.`)
-}
-
-// 2° questão: qual atleta <masc ou fem> da seleção <time> participou de mais edições dos Jogos?
-// masculino, feminino
-// times: argentina, brasileira, norte-americana, canadense, chinesa, australiana
-const questao_2 = (sexo, time) => {
-    const contagem_elem = (lista) => { // função para contar quantas vezes determinado elemento aparece numa lista
-    const contador = lista.reduce((acc, elemento) => {
-        const contagem = acc[elemento] ? acc[elemento] + 1 : 1
-        return { ...acc, [elemento]: contagem }
-    }, {})
-    const num_ocrrencias = Object.entries(contador).filter(([_, contagem]) => contagem >= 1)
-    // num_ocorrencias ^ retorna uma lista no formato [[elemento, n° de repetições], ...]
-    return num_ocrrencias
-    }
-    const atletas = csv_filtrado.filter(x => x.Sex == (sexo[0]).toUppercase() && x.Team == converte_equipe(time))
-    .map(x => x.Name)
-    // atletas ^ retorna uma lista com os nomes de todos atletas que já participaram das olimpiadas
-    // inclusive repetidos (se por exemplo, Michael Jordan participou 3 vezes, o nome dele aparecerá 3 vezes)
-    const elem_ocorrencias = contagem_elem(atletas)
-    // aplicando a função de contar as ocorrências dos elementos de uma lista
-    const mais_participou = elem_ocorrencias[0]
-    // pegamos o primeiro termo do resultado da função acima, que será o atleta que mais vezes teve seu nome repetido, e o número de repetições
-    // ou seja, o atleta que mais vezes participou dos Jogos por aquela seleção, e o número de edições que ele compareceu.
-    // exemplo: ["Oscar Schmidt", 5]
-    const artigo = (sexo) => {
-            if (sexo[0] == "f") return "A"
-            else if (sexo[0] == "m") return "O"
+    async function loadCSVData() {
+      try {
+        const response = await fetch('data.csv');
+        if (!response.ok) {
+          throw new Error('Failed to fetch CSV data');
         }
-    log(`${artigo(sexo)} atleta de basquetebol que mais representou a federação ${time} nos Jogos Olímpicos foi ${mais_participou[0]}, 
-    participando em um total de ${mais_participou[1]} edições da modalidade olímpica do basquete ${sexo}.`)
-}
-
-// 3° questão: qual foi a atleta feminina de maior altura na equipe <time> presente na edição dos Jogos em <cidade>?
-// times: Estados Unidos, Brasil, Bulgaria, Austrália, China
-// cidades: Seoul, Sydney, Atlanta, Barcelona, Rio de Janeiro
-const questao_3 = (time, cidade) => {
-    const atletas_altura = csv_filtrado.filter(x => x.Sex == "F" && x.Team == traduz_pais_p_ingles(time) && x.City == cidade)
-    // ^ retorna a lista com as atletas do time selecionado a participarem das olimpiadas da cidade selecionada
-    .sort((a, b) => b.Height - a.Height)
-    // ordena a lista acima pela altura, de forma decrescente
-    .map(x => [x.Name, x.Height])
-    // retorna uma lista estilo [["Nome da atleta",altura], ["outro nome", outra altura], ...]
-    const maior_atleta = atletas_altura[0]
-    //retorna o primeiro elemento, ou seja, a atleta de maior altura e sua estatura
-    if (maior_atleta == undefined) return `Essa equipe não participou dos Jogos realizados em ${cidade}, tente outra opção!`
-    else return (`A maior atleta (em termos de altura!) que representou a equipe ${time} nas Olimpíadas de ${cidade} 
-    foi ${maior_atleta[0]}, que tinha estatura no total de ${(maior_atleta[1])/100} metros!`)
+        const csvText = await response.text();
+        return csvText
+      } catch (error) {
+        console.error('Error:', error.message);
+        return null
+      }
     }
 
-// 4° questão: quem foi <o/a> atleta de menor idade a representar a seleção <pais> na história do basquete olímpico?
-// paises: Estados Unidos, Brasil, França, Itália, Espanha, Argentina    (pais => estadunidense, brasileira, francesa...)
-    const questao_4 = (artigo, pais) => {
-        const artigo_sexo = (artigo) => {
-            if (artigo == "a") return "F"
-            else if (artigo == "o") return "M"
+    async function questao1() {
+      try {
+        const csvText = await loadCSVData();
+        if (!csvText) return;
+        const rows = csvText.split('\n');
+        const medalhasContadas = {};
+        const medalhasBrasilBasquete = rows.reduce((count, row) => {
+          const columns = row.split(',');
+          if (columns.length >= 15) {
+            const country = columns[6].replace(/"/g, '');
+            const sport = columns[12].replace(/"/g, '');
+            const year = columns[9];
+            const event = columns[13].replace(/"/g, '');
+            const medalha = columns[14].replace(/"/g, '');
+            if (country === 'Brazil' && sport === 'Basketball' && medalha !== 'NA') {
+              const chave = year + '-' + event;
+              if (!medalhasContadas[chave]) {
+                medalhasContadas[chave] = true;
+                return count + 1;
+              }
+            }
+          }
+          return count;
+        }, 0);
+        const valorInserido = parseInt(document.getElementById('input1').value);
+        if (valorInserido === medalhasBrasilBasquete) {
+          document.getElementById('resp12').textContent = 'Certa Resposta';
+        } else {
+          document.getElementById('resp12').textContent = 'Errado. O Brasil possui ' + medalhasBrasilBasquete + ' medalhas no Basquete Olímpico.';
         }
-        const atletas = csv_filtrado.filter(x => x.Sex == artigo_sexo(artigo) && x.Team == converte_equipe(pais))
-        .sort((a,b) => a.Age - b.Age)
-        .map(x => [x.Name, x.Age])
-        // ^retorna uma lista com o nome dos atletas acompanhado de sua idade, em ordem crescente da idade
-        // exemplo: [["Atleta1",19],["Atleta2",19],["Atleta3",20],...]
+      } catch (error) {
+        console.log('Error:', error.message);
+      }
+    }
 
-        const mais_novos = (lista_de_atletas) => { //confere se mais de um atleta tem a menor idade da lista, para retornar todos com a menor idade
-            // ao invés de apenas um, já que não podemos determinar exatamente quem é o mais novo, devido a não termos
-            // informações sobre data e hora de nascimento de cada um deles
-            const menor_idade = Math.min(lista_de_atletas.map(x => x[1]))
-            // identifica qual a menor idade da lista
-            const nomes_menor_idade = lista_de_atletas.filter(x => x[1] == menor_idade).map(x => x[0])
-            // retorna os nomes dos atletas que tem a menor idade da lista
-            return [nomes_menor_idade, [menor_idade]]
+    async function questao2() {
+      try {
+        const csvText = await loadCSVData();
+        if (!csvText) return;
+        const rows = csvText.split('\n');
+        const playerCounts = {};
+        rows.map(row => {
+          const columns = row.split(',');
+          if (columns.length >= 15) {
+            const country = columns[6].replace(/"/g, '');
+            const sport = columns[12].replace(/"/g, '');
+            const year = columns[9];
+            const player = columns[1].replace(/"/g, '');
+            const event = columns[13].replace(/"/g, '');
+
+            if (country === 'Estados Unidos' && sport === 'Basketball') {
+              const key = `${year}-${event}`;
+              playerCounts[player] = playerCounts[player] ? playerCounts[player] + 1 : 1;
+            }
+          }
+        });
+        const playerCountEntries = Object.entries(playerCounts);
+        const maxPlayerCount = playerCountEntries.reduce((max, [player, count]) => count > max.count ? { player, count } : max, { player: null, count: 0 });
+
+        const maxPlayer = maxPlayerCount.player;
+        const maxCount = maxPlayerCount.count;
+
+        const valorInserido = document.getElementById('input2').value;
+        if (valorInserido.toLowerCase() === maxPlayerCount.player.toLocaleLowerCase()) {
+          document.getElementById('resp22').textContent = 'Certa Resposta';
+        } else {
+          document.getElementById('resp22').textContent = 'Errado. A Atleta que mais participou pelos Estados Unidos foi ' + maxPlayerCount.player;
         }
-        const lista_org = mais_novos(atletas)
-        log(`${artigo.toUppercase()}(s) atleta(s) mais nov${artigo}(s) a representar(em) a federação ${pais} na história do 
-        basquete olímpico foi(foram): ${lista_org[0]}, que tinha(m) ${lista_org[1][0]} anos de idade no momento da participação.`)
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
     }
 
-// 5° questão: qual foi a seleção <masc/fem> que conquistou a medalha de <medalha> nos Jogos Olímpicos de <ano>?
-    const questao_5= (sexo,medalha,ano) => {
-        const traduzir_medalha_p_ingles = (medal) => { //recebe o nome da medalha em português e retorna o nome em inglês para filtragem no csv
-            if (medal == "ouro") return "Gold"
-            else if (medal == "prata") return "Silver"
-            else if (medal == "bronze") return "Bronze"
+    async function questao3() {
+      try {
+        const csvText = await loadCSVData();
+        if (!csvText) return;
+
+        const rows = csvText.split('\n');
+        const resultado = rows.reduce((ultimoPaisVencedor, row) => {
+          const columns = row.split(',');
+          if (columns.length >= 15) {
+            const year = parseInt(columns[9]); // Convertendo o ano para número inteiro
+            const sport = columns[12].replace(/"/g, '');
+            const event = columns[13].replace(/"/g, '');
+            const medalha = columns[14].replace(/"/g, '');
+
+            if (sport === 'Basketball' && event === "Basketball Men's Basketball" && medalha === 'Gold' && year > (ultimoPaisVencedor ? ultimoPaisVencedor.year : -Infinity)) {
+              return { country: columns[6].replace(/"/g, ''), year: year }; // Atualizamos o país vencedor e o ano
+            }
+          }
+          return ultimoPaisVencedor;
+        }, null);
+
+        const valorInserido = document.getElementById('input3').value;
+        if (resultado.country !== null && valorInserido.toLowerCase() === resultado.country.toLowerCase()) {
+          document.getElementById('resp32').textContent = `Certa Resposta. O último país vencedor da Olimpíada de basquete masculino foi: ${resultado.country}`;
+        } else {
+          document.getElementById('resp32').textContent = `Errado. O último país vencedor do Basquete Olímpico mascullino foi o ${resultado.country}.`;
         }
-        const medalha_convertida = traduzir_medalha_p_ingles(medalha)
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
+    }
 
-        const converter_medalha_p_posicao = (medalha) => { //recebe a posição do pódio e retorna a medalha equivalente
-        if (posicao == "Gold") return "primeiro"
-        else if (posicao == "Silver") return "segundo"
-        else if (posicao == "Bronze") return "terceiro"
+    async function questao4() {
+      try {
+        const csvText = await loadCSVData();
+        if (!csvText) return;
+
+        const rows = csvText.split('\n');
+        const anoMaisAntigo = rows.reduce((anoAntigo, row) => {
+          const columns = row.split(',');
+          if (columns.length >= 15) {
+            const year = parseInt(columns[9]);
+            const sport = columns[12].replace(/"/g, '');
+            return (sport === 'Basketball' && year < anoAntigo) ? year : anoAntigo;
+          }
+          return anoAntigo;
+        }, Infinity);
+
+        const valorInserido = parseInt(document.getElementById('input4').value);
+        if (anoMaisAntigo !== Infinity && valorInserido === anoMaisAntigo) {
+          document.getElementById('resp42').textContent = `Certa Resposta. O ano em que houve a entrada dos Basquete nas Olimpíadas foi de: ${anoMaisAntigo}`;
+        } else {
+          document.getElementById('resp42').textContent = `Errado. A entrada definitiva do Basquete ocorreu no ano de ${anoMaisAntigo}.`;
+        }
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
     }
-        const lista_da_selecao = csv_filtrado.filter(x => x.Sex == (sexo[0]).toUppercase() && x.Medal == medalha_convertida && x.Year == ano)
-                                  .map(x => x.Team)
-        // lista_da_selecao ^ retorna uma lista apenas com os nomes da coluna Team, dos atletas masc/fem que consquistaram 
-        // determinada medalha em determinado ano
-        const pais = lista_da_selecao[0]
-        // como o resultado será uma lista com o mesmo nome repetidas vezes, a constante pais pega apenas o primeiro termo
-        log(`A seleção ${sexo} ocupante do ${converter_medalha_p_posicao(medalha_convertida)} lugar do pódio na edição
-        dos Jogos Olímpicos do ano de ${ano} foi: ${traduz_pais_p_portugues(pais)}!`)
+
+    async function questao5() {
+      try {
+        const csvText = await loadCSVData();
+        if (!csvText) return;
+        const rows = csvText.split('\n');
+        const dreamteam = rows
+          .filter(row => {
+            const columns = row.split(',');
+            if (columns.length >= 15) {
+              const nomejogador = columns[1].replace(/"/g, '').trim().toLowerCase();
+              return ['michael jordan', 'magic johnson', 'larry bird', 'charles barkley'].includes(nomejogador);
+            }
+            return false;
+          });
+
+        const valorInserido = document.getElementById('input5').value.trim().toLowerCase();
+        if (['michael jordan', 'magic johnson', 'larry bird', 'charles barkley'].includes(valorInserido)) {
+          document.getElementById('resp52').textContent = `Certa Resposta. A equipe em que ele fazia parte havia sido apelidada de Dream Team em 1992`;
+        } else {
+          document.getElementById('resp52').textContent = `Errado.`;
+        }
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
     }
-</script>
+
+
+    function displayCSV(csvText) {
+      const csvDiv = document.getElementById('csvData');
+      csvDiv.innerHTML = '';
+      const rows = csvText.split('\n');
+      rows.map(row => {
+        const columns = row.split(',');
+        const rowDiv = document.createElement('div');
+        rowDiv.textContent = `${columns[0]}, ${columns[1]}, ${columns[2]}, ${columns[3]}, ${columns[4]}, ${columns[5]}, ${columns[6]}, ${columns[7]}, ${columns[8]}, ${columns[9]}, ${columns[10]}, ${columns[11]}, ${columns[12]}, ${columns[13]}, ${columns[14]}`;
+        csvDiv.appendChild(rowDiv);
+      }
+      );
+    }
+  </script>
 </body>
+
 </html>
