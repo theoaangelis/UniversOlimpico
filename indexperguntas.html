@@ -164,9 +164,12 @@
 
         const maxPlayer = maxPlayerCount.player;
         const maxCount = maxPlayerCount.count;
-
+        const remove_espaco = (nome) => {
+          return nome.replace(/\s+/g, ' ').trim()
+        }
+        // usamos uma função auxiliar para remover possíveis espaços desnecessários
         const valorInserido = document.getElementById('input2').value;
-        if (valorInserido.toLowerCase() == maxPlayerCount.player.toLocaleLowerCase()) {
+        if (remove_espaco(valorInserido.toLowerCase()) == maxPlayerCount.player.toLocaleLowerCase()) {
           document.getElementById('resp22').textContent = `Muito bem! Resposta correta. 
           A atleta ${maxPlayer}, além de participar em ${maxCount} edições consecutivas das Olimpíadas, também é a maior medalhista no esporte (incluindo as duas modalidades), conquistando 4 medalhas de ouro e uma de bronze!`
         } else {
@@ -214,7 +217,9 @@
           if (pais_ingles == "United States") return "Estados Unidos"
         }
         const traduz_do_portugues = (pais_portugues) => {
-          if (pais_portugues == "estados unidos") return "united states"
+          // remove espaços adicionais desnecessários e retorna a palavra em inglês para consulta no csv
+          const pais_corrigido = pais_portugues.replace(/\s+/g, ' ').trim()
+          if (pais_corrigido == "estados unidos") return "united states"
         }
         if (resultado.country !== null && traduz_do_portugues(valorInserido.toLowerCase()) === resultado.country.toLowerCase()) {
           document.getElementById('resp32').textContent = `Essa não foi muito difícil né? Certa resposta!
@@ -290,7 +295,11 @@
           });
 
         const valorInserido = document.getElementById('input5').value.trim().toLowerCase();
-        if (['michael jordan', 'magic johnson', 'larry bird', 'charles barkley','patrick ewing','scottie pippen','karl malone','clyde drexler','john stockton','david robinson'].includes(valorInserido)) {
+        const remove_espaco = (nome) => {
+          return nome.replace(/\s+/g, ' ').trim()
+        }
+        // usamos uma função auxiliar para remover possíveis espaços desnecessários
+        if (['michael jordan', 'magic johnson', 'larry bird', 'charles barkley','patrick ewing','scottie pippen','karl malone','clyde drexler','john stockton','david robinson'].includes(remove_espaco(valorInserido))) {
           document.getElementById('resp52').textContent = `Certa resposta, você tem boa memória! A equipe que ele fez parte em 1992 foi apelidada de Dream Team
           devido à sua campanha avassaladora contra as outras seleções.`;
         } else {
